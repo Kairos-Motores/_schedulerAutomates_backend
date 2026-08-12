@@ -16,16 +16,35 @@ const BASE_SCRIPTS_DIR = 'C:/Automacoes';
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
 const HISTORY_FILE = path.join(__dirname, 'history.json');
 
-// 🌐 Configuração do CORS para liberar a Vercel e o Localhost
+// 🌐 CONFIGURAÇÃO DE CORS E PRIVATE NETWORK ACCESS (PNA)
 const allowedOrigins = [
     'https://scheduler-automates.vercel.app',
     'http://localhost:3000',
-    'http://localhost:5173' // Se usar Vite
+    'http://localhost:5173'
 ];
 
+// 1. Libera o acesso de HTTPS (Vercel) para HTTP Localhost (Loopback)
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Credentials', 'true');
+        // 👇 Essa linha resolve o erro do loopback/private network no Chrome
+        res.setHeader('Access-Control-Allow-Private-Network', 'true');
+    }
+
+    if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        return res.sendStatus(204);
+    }
+
+    next();
+});
+
+// 2. Middleware do CORS
 app.use(cors({
     origin: function (origin, callback) {
-        // Permite requisições sem origin (como mobile apps, Postman ou scripts cURL)
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) !== -1) {
             return callback(null, true);
@@ -35,6 +54,7 @@ app.use(cors({
     },
     credentials: true
 }));
+
 app.use(express.json());
 
 // Garante que a pasta e os arquivos JSON existam
