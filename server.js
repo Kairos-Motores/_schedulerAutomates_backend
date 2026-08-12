@@ -16,7 +16,25 @@ const BASE_SCRIPTS_DIR = 'C:/Automacoes';
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
 const HISTORY_FILE = path.join(__dirname, 'history.json');
 
-app.use(cors());
+// 🌐 Configuração do CORS para liberar a Vercel e o Localhost
+const allowedOrigins = [
+    'https://scheduler-automates.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5173' // Se usar Vite
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Permite requisições sem origin (como mobile apps, Postman ou scripts cURL)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('Bloqueado pelo CORS'));
+        }
+    },
+    credentials: true
+}));
 app.use(express.json());
 
 // Garante que a pasta e os arquivos JSON existam
