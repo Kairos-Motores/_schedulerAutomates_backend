@@ -4,22 +4,24 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { exec, execSync } from 'child_process';
+import { promisify } from 'util';
 
+const execAsync = promisify(exec);
+
+// 📌 DEFINIÇÃO DE DIRETORES ES MODULES
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 // 📌 DIRETÓRIOS E ARQUIVOS BASE
 const BASE_SCRIPTS_DIR = 'C:/Automacoes';
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
 const HISTORY_FILE = path.join(__dirname, 'history.json');
 
-const cors = require('cors');
-
 // 🌐 ORIGENS PERMITIDAS
-const allowedOrigins = [
+const ALLOWED_ORIGINS = [
     'https://scheduler-automates.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173'
@@ -27,33 +29,30 @@ const allowedOrigins = [
 
 // 1. Configuração Robusta do CORS
 const corsOptions = {
-    origin: function (origin, callback) {
-        // Permite requisições sem origem (como ferramentas de teste/Postman)
-        if (!origin) return callback(null, true);
-
-        if (allowedOrigins.includes(origin)) {
+    origin: (origin, callback) => {
+        // Permite requisições sem origem (Postman, scripts locais)
+        if (!origin || ALLOWED_ORIGINS.includes(origin)) {
             return callback(null, true);
-        } else {
-            return callback(new Error('Bloqueado pelo CORS'));
         }
+        return callback(new Error('Bloqueado pelo CORS'));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Private-Network'],
 };
 
-// 2. Middleware para aplicar o PNA (Private Network Access) em TODAS as requisições (inclusive OPTIONS)
+// 2. Middleware para aplicar o PNA (Private Network Access) em TODAS as requisições
 app.use((req, res, next) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    const { origin } = req.headers;
+
+    if (ALLOWED_ORIGINS.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
         res.setHeader('Access-Control-Allow-Credentials', 'true');
     }
 
-    // 🛑 ESSENCIAL PARA O CHROME/EDGE: Libera o acesso de HTTPS na Vercel -> HTTP Localhost
+    // Libera comunicação de HTTPS (Vercel) para HTTP (Localhost)
     res.setHeader('Access-Control-Allow-Private-Network', 'true');
 
-    // Trata a requisição Preflight (OPTIONS)
     if (req.method === 'OPTIONS') {
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Private-Network');
@@ -63,58 +62,45 @@ app.use((req, res, next) => {
     next();
 });
 
-// 3. Aplica o Middleware Cors
+// 3. Middlewares Globais
 app.use(cors(corsOptions));
-
 app.use(express.json());
 
-// Garante que a pasta e os arquivos JSON existam
-if (!fs.existsSync(BASE_SCRIPTS_DIR)) {
-    fs.mkdirSync(BASE_SCRIPTS_DIR, { recursive: true });
-}
-if (!fs.existsSync(TASKS_FILE)) {
-    fs.writeFileSync(TASKS_FILE, JSON.stringify([], null, 2));
-}
-if (!fs.existsSync(HISTORY_FILE)) {
-    fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2));
-}
+// 📁 Garantia de existência de diretórios/arquivos base
+if (!fs.existsSync(BASE_SCRIPTS_DIR)) fs.mkdirSync(BASE_SCRIPTS_DIR, { recursive: true });
+if (!fs.existsSync(TASKS_FILE)) fs.writeFileSync(TASKS_FILE, JSON.stringify([], null, 2));
+if (!fs.existsSync(HISTORY_FILE)) fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2));
 
-// 📖 Auxiliares para leitura
-const readTasksFromFile = () => {
+// 📖 Helper Genérico para Leitura de JSON
+const readJsonFile = (filePath) => {
     try {
-        const data = fs.readFileSync(TASKS_FILE, 'utf-8');
+        const data = fs.readFileSync(filePath, 'utf-8');
         return JSON.parse(data || '[]');
-    } catch (err) {
+    } catch {
         return [];
     }
 };
 
-const readHistoryFromFile = () => {
-    try {
-        const data = fs.readFileSync(HISTORY_FILE, 'utf-8');
-        return JSON.parse(data || '[]');
-    } catch (err) {
-        return [];
-    }
-};
+const readTasksFromFile = () => readJsonFile(TASKS_FILE);
+const readHistoryFromFile = () => readJsonFile(HISTORY_FILE);
 
 // ✍️ Auxiliar para adicionar item no Histórico
 const addHistoryEntry = (entry) => {
     try {
         const history = readHistoryFromFile();
-        history.unshift({
+        const newEntry = {
             id: Date.now().toString(),
             timestamp: new Date().toISOString(),
             ...entry
-        });
-        const trimmedHistory = history.slice(0, 500);
+        };
+        const trimmedHistory = [newEntry, ...history].slice(0, 500);
         fs.writeFileSync(HISTORY_FILE, JSON.stringify(trimmedHistory, null, 2));
     } catch (err) {
-        console.error('❌ Erro ao salvar histórico:', err);
+        console.error('❌ Erro ao salvar histórico:', err.message);
     }
 };
 
-// 🛠️ AUXILIAR: GESTÃO INTELIGENTE DE AMBIENTE VIRTUAL (VENV + REQUIREMENTS)
+// 🛠️ AUXILIAR: GESTÃO INTELIGENTE DE AMBIENTE VIRTUAL (VENV)
 const ensureVenvEnvironment = (scriptDir) => {
     const rootVenvDir = path.join(BASE_SCRIPTS_DIR, '.venv');
     const rootPython = path.join(rootVenvDir, 'Scripts', 'python.exe');
@@ -136,8 +122,8 @@ const ensureVenvEnvironment = (scriptDir) => {
         }
 
         const flagFile = path.join(localVenvDir, '.deps_installed');
-        let reqModifiedTime = fs.statSync(localReqFile).mtimeMs;
-        let lastInstalledTime = fs.existsSync(flagFile) ? Number(fs.readFileSync(flagFile, 'utf-8')) : 0;
+        const reqModifiedTime = fs.statSync(localReqFile).mtimeMs;
+        const lastInstalledTime = fs.existsSync(flagFile) ? Number(fs.readFileSync(flagFile, 'utf-8')) : 0;
 
         if (reqModifiedTime > lastInstalledTime) {
             console.log(`📥 Instalando/Atualizando bibliotecas do requirements.txt em ${scriptDir}...`);
@@ -152,9 +138,7 @@ const ensureVenvEnvironment = (scriptDir) => {
         return `"${localPython}"`;
     }
 
-    if (fs.existsSync(rootPython)) {
-        return `"${rootPython}"`;
-    }
+    if (fs.existsSync(rootPython)) return `"${rootPython}"`;
 
     if (!fs.existsSync(rootVenvDir)) {
         console.log(`📦 Criando VENV compartilhada principal em: ${rootVenvDir}...`);
@@ -177,24 +161,37 @@ const ensureVenvEnvironment = (scriptDir) => {
 
 // 🔎 Mapeamento de imports para nomes de pacotes no PIP
 const PACKAGE_MAP = {
-    'pandas': 'pandas',
-    'openpyxl': 'openpyxl',
-    'pyodbc': 'pyodbc',
-    'azure': 'azure-identity',
+    // 🟢 Corrigidos / Essenciais
+    cv2: 'opencv-python', // 🛑 Corrigido: sem espaços no hífen
+    dotenv: 'python-dotenv', // ➕ Adicionado: essencial para .env / config.py
+
+    // 📊 Manipulação de Dados & Arquivos
+    pandas: 'pandas',
+    openpyxl: 'openpyxl',
+    pyodbc: 'pyodbc',
+    PIL: 'Pillow',
+    docx: 'python-docx',
+    xlsxwriter: 'xlsxwriter',
+    yaml: 'pyyaml',
+    fitz: 'PyMuPDF',
+
+    // 🌐 Web & APIs
+    requests: 'requests',
+    bs4: 'beautifulsoup4',
+
+    // ☁️ Azure & Cloud
+    azure: 'azure-identity',
     'azure.identity': 'azure-identity',
     'azure.storage': 'azure-storage-blob',
-    'requests': 'requests',
-    'bs4': 'beautifulsoup4',
-    'cv2': 'opencv-python',
-    'PIL': 'Pillow',
-    'docx': 'python-docx'
+
+    // 🤖 Machine Learning / Outros comuns
+    sklearn: 'scikit-learn'
 };
 
-// ⚡ CACHE EM MEMÓRIA: Evita re-verificar pacotes já validados na sessão atual do servidor
 const installedPackagesCache = new Set();
 
-// 🤖 AUTO-INSTALL INTELIGENTE: Só instala o que REALMENTE estiver faltando na VENV
-function autoInstallImports(scriptPath, pythonExe) {
+// 🤖 AUTO-INSTALL INTELIGENTE DE MÓDULOS PYTHON
+const autoInstallImports = (scriptPath, pythonExe) => {
     try {
         const content = fs.readFileSync(scriptPath, 'utf-8');
         const importRegex = /^\s*(?:import|from)\s+([a-zA-Z0-9_.]+)/gm;
@@ -202,45 +199,40 @@ function autoInstallImports(scriptPath, pythonExe) {
         const detectedModules = new Set();
 
         while ((match = importRegex.exec(content)) !== null) {
-            const fullMod = match[1];
-            const baseMod = fullMod.split('.')[0];
-            detectedModules.add(baseMod); // Foca no módulo principal
+            const [fullMod] = match[1].split('.');
+            detectedModules.add(fullMod);
         }
 
         const cleanPythonExe = pythonExe.replace(/"/g, '');
         const pipExe = cleanPythonExe.replace('python.exe', 'pip.exe');
 
-        const nativeModules = [
+        const nativeModules = new Set([
             'os', 'sys', 'json', 're', 'math', 'datetime', 'time',
             'pathlib', 'subprocess', 'urllib', 'shutil', 'typing',
             'io', 'csv', 'collections', 'random', 'base64', 'hashlib', 'codecs'
-        ];
+        ]);
 
-        // 1️⃣ Pega a lista de pacotes instalados na VENV de uma só vez
         let installedInVenv = '';
         try {
             installedInVenv = execSync(`"${pipExe}" list`, { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] }).toLowerCase();
-        } catch (e) {
+        } catch {
             installedInVenv = '';
         }
 
-        detectedModules.forEach(mod => {
-            if (nativeModules.includes(mod)) return;
+        detectedModules.forEach((mod) => {
+            if (nativeModules.has(mod)) return;
 
             const packageName = PACKAGE_MAP[mod] || mod;
             const cacheKey = `${cleanPythonExe}_${packageName}`;
 
-            // 2️⃣ Se já foi validado nesta sessão, ignora!
             if (installedPackagesCache.has(cacheKey)) return;
 
-            // 3️⃣ Se o 'pip list' mostra que já está instalado, salva no cache e ignora!
             if (installedInVenv.includes(packageName.toLowerCase())) {
                 installedPackagesCache.add(cacheKey);
                 return;
             }
 
-            // 4️⃣ Só executa a instalação se realmente NÃO constar no pip list:
-            console.log(`📦 [Auto-Install] Módulo '${mod}' não encontrado na VENV. Instalando '${packageName}'...`);
+            console.log(`📦 [Auto-Install] Módulo '${mod}' não encontrado. Instalando '${packageName}'...`);
             try {
                 execSync(`"${pipExe}" install ${packageName}`, {
                     stdio: 'inherit',
@@ -255,10 +247,10 @@ function autoInstallImports(scriptPath, pythonExe) {
     } catch (e) {
         console.error('⚠️ Não foi possível escanear imports do arquivo:', e.message);
     }
-}
+};
 
-// 📁 ROTA: Seleção de arquivos via janela do Windows (PowerShell Dialog)
-app.post('/api/select-script', (req, res) => {
+// 📁 ROTA: Seleção de arquivos via caixa do Windows (PowerShell)
+app.post('/api/select-script', async (req, res) => {
     const uniqueId = `${Date.now()}_${Math.floor(Math.random() * 1000)}`;
     const tempPs1Path = path.join(__dirname, `temp_select_${uniqueId}.ps1`);
 
@@ -281,22 +273,11 @@ $form.Dispose()
 
     try {
         fs.writeFileSync(tempPs1Path, psScriptContent, 'utf-8');
-    } catch (fsErr) {
-        return res.status(500).json({ error: 'Erro ao criar seletor' });
-    }
+        const command = `powershell -NoProfile -ExecutionPolicy Bypass -File "${tempPs1Path}"`;
 
-    const command = `powershell -NoProfile -ExecutionPolicy Bypass -File "${tempPs1Path}"`;
-
-    exec(command, { timeout: 45000 }, (error, stdout) => {
-        if (fs.existsSync(tempPs1Path)) {
-            try { fs.unlinkSync(tempPs1Path); } catch (e) { }
-        }
-
-        if (error) {
-            return res.status(500).json({ error: 'Seleção cancelada ou expirada' });
-        }
-
+        const { stdout } = await execAsync(command, { timeout: 45000 });
         const selectedFullPath = stdout.trim();
+
         if (!selectedFullPath) return res.json({ canceled: true });
 
         return res.json({
@@ -304,7 +285,13 @@ $form.Dispose()
             fullPath: selectedFullPath,
             fileName: path.basename(selectedFullPath)
         });
-    });
+    } catch (error) {
+        return res.status(500).json({ error: 'Seleção cancelada ou expirada' });
+    } finally {
+        if (fs.existsSync(tempPs1Path)) {
+            try { fs.unlinkSync(tempPs1Path); } catch { }
+        }
+    }
 });
 
 // 🟢 GET: Buscar automações
@@ -316,16 +303,18 @@ app.get('/api/tasks', (req, res) => {
 app.post('/api/tasks', (req, res) => {
     try {
         const newTask = req.body;
-        let tasks = readTasksFromFile();
-        const index = tasks.findIndex(t => t.id === newTask.id);
+        const tasks = readTasksFromFile();
+        const index = tasks.findIndex((t) => t.id === newTask.id);
+
         if (index !== -1) {
             tasks[index] = newTask;
         } else {
             tasks.push(newTask);
         }
+
         fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks, null, 2));
         return res.json({ success: true, task: newTask });
-    } catch (err) {
+    } catch {
         return res.status(500).json({ error: 'Erro ao salvar tarefa' });
     }
 });
@@ -334,43 +323,42 @@ app.post('/api/tasks', (req, res) => {
 app.delete('/api/tasks/:id', (req, res) => {
     try {
         const { id } = req.params;
-        let tasks = readTasksFromFile();
-        tasks = tasks.filter(t => t.id !== id);
+        const tasks = readTasksFromFile().filter((t) => t.id !== id);
         fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks, null, 2));
         return res.json({ success: true });
-    } catch (err) {
+    } catch {
         return res.status(500).json({ error: 'Erro ao deletar tarefa' });
     }
 });
 
-// 📜 GET: Buscar Histórico de Execuções
+// 📜 GET: Buscar Histórico
 app.get('/api/history', (req, res) => {
     res.json(readHistoryFromFile());
 });
 
-// 📜 DELETE: Limpar todo o Histórico
+// 📜 DELETE: Limpar Histórico
 app.delete('/api/history', (req, res) => {
     try {
         fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2));
-        res.json({ success: true });
-    } catch (err) {
-        res.status(500).json({ error: 'Erro ao limpar histórico' });
+        return res.json({ success: true });
+    } catch {
+        return res.status(500).json({ error: 'Erro ao limpar histórico' });
     }
 });
 
 // ⚡ POST: Executar automação
-app.post('/api/tasks/run', (req, res) => {
+app.post('/api/tasks/run', async (req, res) => {
     const { scriptPath, taskId, taskTitle } = req.body;
 
     if (!scriptPath) {
         return res.status(400).json({ success: false, error: 'Caminho do script não informado.' });
     }
 
-    let tasks = readTasksFromFile();
-    const taskIndex = tasks.findIndex(t => t.id === taskId || t.scriptPath === scriptPath);
-    const taskObj = taskIndex !== -1 ? tasks[taskIndex] : null;
+    const tasks = readTasksFromFile();
+    const taskIndex = tasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+    const taskObj = tasks[taskIndex] ?? null;
 
-    const title = taskTitle || (taskObj ? taskObj.title : 'Execução Manual');
+    const title = taskTitle || (taskObj?.title ?? 'Execução Manual');
     const fileName = path.basename(scriptPath);
 
     const fullScriptPath = path.isAbsolute(scriptPath)
@@ -391,7 +379,7 @@ app.post('/api/tasks/run', (req, res) => {
         }
 
         addHistoryEntry({
-            taskId: taskId || null,
+            taskId: taskId ?? null,
             title,
             fileName,
             scriptPath: fullScriptPath,
@@ -407,53 +395,25 @@ app.post('/api/tasks/run', (req, res) => {
 
     let command = '';
 
-    if (fileExt === '.bat' || fileExt === '.cmd' || fileExt === '.exe') {
+    if (['.bat', '.cmd', '.exe'].includes(fileExt)) {
         command = `"${fullScriptPath}"`;
         console.log(`▶ Executando EXECUTÁVEL/BATCH: ${fullScriptPath}`);
     } else {
         const pythonExe = ensureVenvEnvironment(scriptDir);
-
-        // Check rápido e inteligente de bibliotecas faltantes
         autoInstallImports(fullScriptPath, pythonExe);
 
         command = `${pythonExe} "${fullScriptPath}"`;
         console.log(`▶ Executando PYTHON: ${fullScriptPath} usando [${pythonExe}]`);
     }
 
-    // Executa com suporte completo a UTF-8 (Emojis)
-    exec(command, {
-        cwd: scriptDir,
-        env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
-    }, (error, stdout, stderr) => {
-        let errOutput = stderr || (error ? error.message : '');
+    try {
+        const { stdout } = await execAsync(command, {
+            cwd: scriptDir,
+            env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
+        });
 
-        if (errOutput.includes('IM002') || errOutput.includes('SQLDriverConnect')) {
-            errOutput = `⚠️ ERRO DE SISTEMA: O Driver ODBC do SQL Server não está instalado neste PC.\n\nInstale o 'ODBC Driver 17 for SQL Server' da Microsoft nesta máquina para habilitar a conexão com o Banco de Dados.`;
-        }
-
-        let updatedTasks = readTasksFromFile();
-        const currentTaskIdx = updatedTasks.findIndex(t => t.id === taskId || t.scriptPath === scriptPath);
-
-        if (error) {
-            if (currentTaskIdx !== -1) {
-                updatedTasks[currentTaskIdx].status = 'failed';
-                fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
-            }
-
-            addHistoryEntry({
-                taskId: taskId || null,
-                title,
-                fileName,
-                scriptPath: fullScriptPath,
-                status: 'failed',
-                output: errOutput
-            });
-
-            return res.status(500).json({
-                success: false,
-                error: errOutput
-            });
-        }
+        const updatedTasks = readTasksFromFile();
+        const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
 
         if (currentTaskIdx !== -1) {
             updatedTasks[currentTaskIdx].status = 'success';
@@ -461,7 +421,7 @@ app.post('/api/tasks/run', (req, res) => {
         }
 
         addHistoryEntry({
-            taskId: taskId || null,
+            taskId: taskId ?? null,
             title,
             fileName,
             scriptPath: fullScriptPath,
@@ -469,14 +429,37 @@ app.post('/api/tasks/run', (req, res) => {
             output: stdout || 'Executado com sucesso.'
         });
 
-        return res.json({
-            success: true,
-            output: stdout
+        return res.json({ success: true, output: stdout });
+    } catch (error) {
+        let errOutput = error.stderr || error.message;
+
+        if (errOutput.includes('IM002') || errOutput.includes('SQLDriverConnect')) {
+            errOutput = `⚠️ ERRO DE SISTEMA: O Driver ODBC do SQL Server não está instalado neste PC.\n\nInstale o 'ODBC Driver 17 for SQL Server' para habilitar a conexão.`;
+        }
+
+        const updatedTasks = readTasksFromFile();
+        const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+
+        if (currentTaskIdx !== -1) {
+            updatedTasks[currentTaskIdx].status = 'failed';
+            fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
+        }
+
+        addHistoryEntry({
+            taskId: taskId ?? null,
+            title,
+            fileName,
+            scriptPath: fullScriptPath,
+            status: 'failed',
+            output: errOutput
         });
-    });
+
+        return res.status(500).json({ success: false, error: errOutput });
+    }
 });
 
+// 🚀 START SERVER
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:8000`);
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
     console.log(`📁 Diretório padrão: ${BASE_SCRIPTS_DIR}`);
 });
