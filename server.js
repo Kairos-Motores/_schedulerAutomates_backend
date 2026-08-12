@@ -8,7 +8,7 @@ import { promisify } from 'util';
 
 const execAsync = promisify(exec);
 
-// 📌 DEFINIÇÃO DE DIRETORES ES MODULES
+// 📌 DEFINIÇÃO DE DIRETÓRIOS ES MODULES
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -24,46 +24,34 @@ const HISTORY_FILE = path.join(__dirname, 'history.json');
 const ALLOWED_ORIGINS = [
     'https://scheduler-automates.vercel.app',
     'http://localhost:3000',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'http://localhost:8000'
 ];
 
-// 1. Configuração Robusta do CORS
-const corsOptions = {
-    origin: (origin, callback) => {
-        // Permite requisições sem origem (Postman, scripts locais)
-        if (!origin || ALLOWED_ORIGINS.includes(origin)) {
-            return callback(null, true);
-        }
-        return callback(new Error('Bloqueado pelo CORS'));
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Private-Network'],
-};
-
-// 2. Middleware para aplicar o PNA (Private Network Access) em TODAS as requisições
+// 1. Configuração Robusta de CORS & PNA (Private Network Access)
 app.use((req, res, next) => {
-    const { origin } = req.headers;
+    const origin = req.headers.origin;
 
-    if (ALLOWED_ORIGINS.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-        res.setHeader('Access-Control-Allow-Credentials', 'true');
+    // Permite requisições sem origem (Postman/Curl) ou origens permitidas
+    if (!origin || ALLOWED_ORIGINS.includes(origin) || origin.endsWith('.vercel.app')) {
+        res.setHeader('Access-Control-Allow-Origin', origin || '*');
     }
 
-    // Libera comunicação de HTTPS (Vercel) para HTTP (Localhost)
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Private-Network');
+
+    // Libera comunicação de HTTPS (Vercel) para HTTP/Localhost
     res.setHeader('Access-Control-Allow-Private-Network', 'true');
 
     if (req.method === 'OPTIONS') {
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Private-Network');
-        return res.sendStatus(204);
+        return res.status(204).end();
     }
 
     next();
 });
 
-// 3. Middlewares Globais
-app.use(cors(corsOptions));
+// 2. Middlewares Globais
 app.use(express.json());
 
 // 📁 Garantia de existência de diretórios/arquivos base
@@ -162,8 +150,8 @@ const ensureVenvEnvironment = (scriptDir) => {
 // 🔎 Mapeamento de imports para nomes de pacotes no PIP
 const PACKAGE_MAP = {
     // 🟢 Corrigidos / Essenciais
-    cv2: 'opencv-python', // 🛑 Corrigido: sem espaços no hífen
-    dotenv: 'python-dotenv', // ➕ Adicionado: essencial para .env / config.py
+    cv2: 'opencv-python',
+    dotenv: 'python-dotenv',
 
     // 📊 Manipulação de Dados & Arquivos
     pandas: 'pandas',
@@ -361,8 +349,11 @@ app.post('/api/tasks/run', async (req, res) => {
     const title = taskTitle || (taskObj?.title ?? 'Execução Manual');
     const fileName = path.basename(scriptPath);
 
-    const fullScriptPath = path.isAbsolute(scriptPath)
-        ? scriptPath
+    // 📌 TRATAMENTO INTELIGENTE DE CAMINHO ABSOLUTO (Evita duplicação C:/Automacoes/C:\...)
+    const isAbsolutePath = /^[a-zA-Z]:[\\/]/.test(scriptPath) || scriptPath.startsWith('/') || path.isAbsolute(scriptPath);
+
+    const fullScriptPath = isAbsolutePath
+        ? path.normalize(scriptPath)
         : path.join(BASE_SCRIPTS_DIR, scriptPath);
 
     if (taskIndex !== -1) {
