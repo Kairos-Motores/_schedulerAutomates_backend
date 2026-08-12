@@ -1,0 +1,682 @@
+[
+  {
+    "id": "1786537364925",
+    "timestamp": "2026-08-12T12:22:44.925Z",
+    "taskId": "1786532771273",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "success",
+    "output": "🔍 Analisando RECNO no Dataverse...\r\n📋 Maiores RECNOS encontrados: [18266, 18265, 18264, 18263, 18262]\r\n✅ Retomando a partir do RECNO > 18266\r\n🔌 Conectando ao Protheus...\r\n📊 0 novos registros encontrados.\r\n✅ Tudo sincronizado.\r\n"
+  },
+  {
+    "id": "1786535985490",
+    "timestamp": "2026-08-12T11:59:45.490Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4464\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4464/4464.\r\nOS ja existentes no Dataverse: 4477\r\nOS mapeadas para processamento: 25\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/1: OS 1 a 25.\r\n[1/25] 0049-SL: sem alteracao\r\n[2/25] 15581-AB: sem alteracao\r\n[3/25] 2921-CA: sem alteracao\r\n[4/25] 15686-UN: sem alteracao\r\n[5/25] 15721-AL: sem alteracao\r\n[6/25] 2992-CA: sem alteracao\r\n[7/25] 1735-PO: sem alteracao\r\n[8/25] 16107-AB: sem alteracao\r\n[9/25] 1071-ALU: sem alteracao\r\n[10/25] 0370-TAR: sem alteracao\r\n[11/25] 16413-MT: sem alteracao\r\n[12/25] 16416-MT: sem alteracao\r\n[13/25] 1265-FE: sem alteracao\r\n[14/25] 0479-PLA: sem alteracao\r\n[15/25] 0490-AMB: sem alteracao\r\n[16/25] 16850-AL: sem alteracao\r\n[17/25] 2236-SA: atualizado\r\n[18/25] 2238-SA: atualizado\r\n[19/25] 0653-EFD: sem alteracao\r\n[20/25] 0665-NTS: sem alteracao\r\n[21/25] 17037-AL: atualizado\r\n[22/25] 0390-ENV: atualizado\r\n[23/25] 2256-SA: atualizado\r\n[24/25] 0257-OP: atualizado\r\n[25/25] 2258-SA: atualizado\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786535699815",
+    "timestamp": "2026-08-12T11:54:59.815Z",
+    "taskId": "1786535541369",
+    "title": "get-columns-3",
+    "fileName": "get-columns-3.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-3.py",
+    "status": "success",
+    "output": "🔍 Buscando o maior RECNO real no Dataverse...\r\n📋 Top 5 RECNOs encontrados no Dataverse: [37811, 37809, 37806, 37805, 37804]\r\n✅ Ponto de retomada real detectado: 37811\r\n📊 Buscando no SQL Server (RECNO > 37811)...\r\n🚀 136 novos registros prontos para envio.\r\n🔥 [1/136] Sucesso no RECNO: 37814\r\n🔥 [101/136] Sucesso no RECNO: 37915\r\n🔥 [136/136] Sucesso no RECNO: 37950\r\n"
+  },
+  {
+    "id": "1786535492989",
+    "timestamp": "2026-08-12T11:51:32.989Z",
+    "taskId": "1786532771273",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "success",
+    "output": "🔍 Analisando RECNO no Dataverse...\r\n📋 Maiores RECNOS encontrados: [18235, 18234, 18233, 18232, 18231]\r\n✅ Retomando a partir do RECNO > 18235\r\n🔌 Conectando ao Protheus...\r\n📊 31 novos registros encontrados.\r\n🚀 [1/31] RECNO: 18236 enviado.\r\n🚀 [31/31] RECNO: 18266 enviado.\r\n"
+  },
+  {
+    "id": "1786535069779",
+    "timestamp": "2026-08-12T11:44:29.779Z",
+    "taskId": "1786532771273",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\column\\get-columns-2.py\", line 162, in <module>\r\n    sincronizar_total()\r\n    ~~~~~~~~~~~~~~~~~^^\r\n  File \"C:\\Automacoes\\column\\get-columns-2.py\", line 93, in sincronizar_total\r\n    ultimo_recno = obter_ultimo_recno_real(headers)\r\n  File \"C:\\Automacoes\\column\\get-columns-2.py\", line 65, in obter_ultimo_recno_real\r\n    print(\"\\U0001f50d Analisando RECNO no Dataverse...\")\r\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1252.py\", line 19, in encode\r\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\r\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nUnicodeEncodeError: 'charmap' codec can't encode character '\\U0001f50d' in position 0: character maps to <undefined>\r\n"
+  },
+  {
+    "id": "1786533182836",
+    "timestamp": "2026-08-12T11:13:02.836Z",
+    "taskId": "1786532771273",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\column\\get-columns-2.py\", line 4, in <module>\r\n    from azure.identity import ClientSecretCredential\r\nModuleNotFoundError: No module named 'azure'\r\n"
+  },
+  {
+    "id": "1786532822548",
+    "timestamp": "2026-08-12T11:07:02.548Z",
+    "taskId": "1786532771273",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\column\\get-columns-2.py\", line 4, in <module>\r\n    from azure.identity import ClientSecretCredential\r\nModuleNotFoundError: No module named 'azure'\r\n"
+  },
+  {
+    "id": "1786532701970",
+    "timestamp": "2026-08-12T11:05:01.970Z",
+    "taskId": "1786532594009",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2",
+    "status": "failed",
+    "output": "Script não encontrado: C:\\Automacoes\\column\\get-columns-2"
+  },
+  {
+    "id": "1786532301873",
+    "timestamp": "2026-08-12T10:58:21.873Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4464\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4464/4464.\r\nOS ja existentes no Dataverse: 4477\r\nOS mapeadas para processamento: 25\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/1: OS 1 a 25.\r\n[1/25] 0049-SL: sem alteracao\r\n[2/25] 15581-AB: sem alteracao\r\n[3/25] 0788-ALU: sem alteracao\r\n[4/25] 15686-UN: sem alteracao\r\n[5/25] 15721-AL: sem alteracao\r\n[6/25] 15809-AL: sem alteracao\r\n[7/25] 15933-AL: sem alteracao\r\n[8/25] 15971-AL: sem alteracao\r\n[9/25] 1157-FE: sem alteracao\r\n[10/25] 1735-PO: sem alteracao\r\n[11/25] 16107-AB: atualizado\r\n[12/25] 0297-EMB: sem alteracao\r\n[13/25] 2137-SA: sem alteracao\r\n[14/25] 16296-AL: sem alteracao\r\n[15/25] 1071-ALU: sem alteracao\r\n[16/25] 16337-AL: sem alteracao\r\n[17/25] 16349-UN: sem alteracao\r\n[18/25] 16413-MT: sem alteracao\r\n[19/25] 16416-MT: sem alteracao\r\n[20/25] 0045-ERO: sem alteracao\r\n[21/25] 1265-FE: atualizado\r\n[22/25] 0490-AMB: atualizado\r\n[23/25] 1152-ALU: sem alteracao\r\n[24/25] 16688-AL: sem alteracao\r\n[25/25] 0653-EFD: atualizado\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786531228987",
+    "timestamp": "2026-08-12T10:40:28.987Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4464\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4464/4464.\r\nOS ja existentes no Dataverse: 4476\r\nOS mapeadas para processamento: 42\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/1: OS 1 a 42.\r\n[1/42] 2921-CA: sem alteracao\r\n[2/42] 0788-ALU: sem alteracao\r\n[3/42] 1664-PO: sem alteracao\r\n[4/42] 15762-NF: sem alteracao\r\n[5/42] 0872-ALU: sem alteracao\r\n[6/42] 1686-PO: sem alteracao\r\n[7/42] 15971-AL: sem alteracao\r\n[8/42] 2992-CA: sem alteracao\r\n[9/42] 16063-AL: sem alteracao\r\n[10/42] 3029-CA: atualizado\r\n[11/42] 16296-AL: sem alteracao\r\n[12/42] 1071-ALU: atualizado\r\n[13/42] 16337-AL: sem alteracao\r\n[14/42] 16349-UN: sem alteracao\r\n[15/42] 16446-UN: sem alteracao\r\n[16/42] 0045-ERO: sem alteracao\r\n[17/42] 0444-IDE: sem alteracao\r\n[18/42] 0489-AMB: sem alteracao\r\n[19/42] 1145-ALU: atualizado\r\n[20/42] 16687-AL: sem alteracao\r\n[21/42] 16688-AL: sem alteracao\r\n[22/42] 0193-OZ: sem alteracao\r\n[23/42] 3114-CA: atualizado\r\n[24/42] 0537-AMB: sem alteracao\r\n[25/42] 1357-FE: atualizado\r\n[26/42] 1203-ALU: atualizado\r\n[27/42] 16850-AL: sem alteracao\r\n[28/42] 16896-AL: atualizado\r\n[29/42] 0620-PEP: atualizado\r\n[30/42] 16954-AL: atualizado\r\n[31/42] 17007-AG: atualizado\r\n[32/42] 17008-AG: atualizado\r\n[33/42] 17009-AG: atualizado\r\n[34/42] 17010-AG: atualizado\r\n[35/42] 0389-ENV: atualizado\r\n[36/42] 0670-FAN: atualizado\r\n[37/42] 0689-PKO: atualizado\r\n[38/42] 3167-CA: atualizado\r\n[39/42] 0704-PKO: atualizado\r\n[40/42] 0711-SAB: atualizado\r\n[41/42] 2258-SA: atualizado\r\n[42/42] 0040-COP: criado\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786530439293",
+    "timestamp": "2026-08-12T10:27:19.293Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786530388767",
+    "timestamp": "2026-08-12T10:26:28.767Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786462944540",
+    "timestamp": "2026-08-11T15:42:24.540Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786462937796",
+    "timestamp": "2026-08-11T15:42:17.796Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786462802189",
+    "timestamp": "2026-08-11T15:40:02.189Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786462791126",
+    "timestamp": "2026-08-11T15:39:51.126Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786462510914",
+    "timestamp": "2026-08-11T15:35:10.914Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786462478998",
+    "timestamp": "2026-08-11T15:34:38.998Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786462241404",
+    "timestamp": "2026-08-11T15:30:41.404Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786462236050",
+    "timestamp": "2026-08-11T15:30:36.050Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786461641309",
+    "timestamp": "2026-08-11T15:20:41.309Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4463\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4463/4463.\r\nOS ja existentes no Dataverse: 4476\r\nOS mapeadas para processamento: 28\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/1: OS 1 a 28.\r\n[1/28] 2921-CA: sem alteracao\r\n[2/28] 0084-KM: sem alteracao\r\n[3/28] 0061-SL: sem alteracao\r\n[4/28] 15799-AL: sem alteracao\r\n[5/28] 15809-AL: sem alteracao\r\n[6/28] 15884-AL: sem alteracao\r\n[7/28] 15929-WH: sem alteracao\r\n[8/28] 15933-AL: sem alteracao\r\n[9/28] 15971-AL: sem alteracao\r\n[10/28] 2992-CA: sem alteracao\r\n[11/28] 16063-AL: atualizado\r\n[12/28] 0315-PKO: sem alteracao\r\n[13/28] 16296-AL: sem alteracao\r\n[14/28] 0370-TAR: sem alteracao\r\n[15/28] 16416-MT: sem alteracao\r\n[16/28] 16446-UN: sem alteracao\r\n[17/28] 16519-AL: sem alteracao\r\n[18/28] 0479-PLA: sem alteracao\r\n[19/28] 16586-AL: sem alteracao\r\n[20/28] 0489-AMB: sem alteracao\r\n[21/28] 1152-ALU: sem alteracao\r\n[22/28] 16687-AL: sem alteracao\r\n[23/28] 0193-OZ: sem alteracao\r\n[24/28] 0074-SL: sem alteracao\r\n[25/28] 0537-AMB: sem alteracao\r\n[26/28] 1357-FE: sem alteracao\r\n[27/28] 16850-AL: sem alteracao\r\n[28/28] 0653-EFD: sem alteracao\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786461027804",
+    "timestamp": "2026-08-11T15:10:27.804Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4463\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4463/4463.\r\nOS ja existentes no Dataverse: 4373\r\nOS mapeadas para processamento: 140\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/3: OS 1 a 50.\r\n[1/140] 0084-KM: sem alteracao\r\n[2/140] 0269-ENV: atualizado\r\n[3/140] 1664-PO: atualizado\r\n[4/140] 0203-OP: sem alteracao\r\n[5/140] 0061-SL: sem alteracao\r\n[6/140] 0872-ALU: atualizado\r\n[7/140] 15799-AL: sem alteracao\r\n[8/140] 15809-AL: sem alteracao\r\n[9/140] 1686-PO: atualizado\r\n[10/140] 15929-WH: atualizado\r\n[11/140] 15933-AL: sem alteracao\r\n[12/140] 15971-AL: sem alteracao\r\n[13/140] 1157-FE: sem alteracao\r\n[14/140] 1735-PO: sem alteracao\r\n[15/140] 0297-EMB: atualizado\r\n[16/140] 0315-PKO: atualizado\r\n[17/140] 2137-SA: sem alteracao\r\n[18/140] 16337-AL: sem alteracao\r\n[19/140] 0370-TAR: sem alteracao\r\n[20/140] 16349-UN: sem alteracao\r\n[21/140] 16351-AL: sem alteracao\r\n[22/140] 16416-MT: atualizado\r\n[23/140] 16519-AL: sem alteracao\r\n[24/140] 0444-IDE: sem alteracao\r\n[25/140] 0479-PLA: sem alteracao\r\n[26/140] 16586-AL: sem alteracao\r\n[27/140] 1152-ALU: atualizado\r\n[28/140] 16688-AL: sem alteracao\r\n[29/140] 0193-OZ: sem alteracao\r\n[30/140] 0074-SL: sem alteracao\r\n[31/140] 0537-AMB: sem alteracao\r\n[32/140] 1357-FE: atualizado\r\n[33/140] 16814-AL: atualizado\r\n[34/140] 16850-AL: sem alteracao\r\n[35/140] 16872-AL: atualizado\r\n[36/140] 0653-EFD: atualizado\r\n[37/140] 0386-ENV: criado\r\n[38/140] 0665-NTS: atualizado\r\n[39/140] 17044-DT: criado\r\n[40/140] 0695-CEB: criado\r\n[41/140] 0224-D: criado\r\n[42/140] 0696-TAR: criado\r\n[43/140] 0697-TAR: criado\r\n[44/140] 0698-TAR: criado\r\n[45/140] 1234-ALU: criado\r\n[46/140] 17054-AL: criado\r\n[47/140] 17055-AL: criado\r\n[48/140] 17056-AL: criado\r\n[49/140] 2254-SA: criado\r\n[50/140] 0699-SAN: criado\r\nLote 2/3: OS 51 a 100.\r\n[51/140] 0700-SAN: criado\r\n[52/140] 0701-SAN: criado\r\n[53/140] 17051-AL: criado\r\n[54/140] 17052-AL: criado\r\n[55/140] 17053-AL: criado\r\n[56/140] 2255-SA: criado\r\n[57/140] 2256-SA: criado\r\n[58/140] 0004-VIB: criado\r\n[59/140] 0005-VIB: criado\r\n[60/140] 0017-CRX: criado\r\n[61/140] 17041-AL: criado\r\n[62/140] 17063-AL: criado\r\n[63/140] 0702-TAR: criado\r\n[64/140] 0703-TAR: criado\r\n[65/140] 17042-AL: criado\r\n[66/140] 17043-AL: criado\r\n[67/140] 17057-MP: criado\r\n[68/140] 1808-PO: criado\r\n[69/140] 3166-CA: criado\r\n[70/140] 0256-OP: criado\r\n[71/140] 0257-OP: criado\r\n[72/140] 1235-ALU: criado\r\n[73/140] 1236-ALU: criado\r\n[74/140] 1237-ALU: criado\r\n[75/140] 17060-MP: criado\r\n[76/140] 1809-PO: criado\r\n[77/140] 2257-SA: criado\r\n[78/140] 0001-KM: criado\r\n[79/140] 0061-ERO: criado\r\n[80/140] 0062-ERO: criado\r\n[81/140] 0063-ERO: criado\r\n[82/140] 0064-ERO: criado\r\n[83/140] 0065-ERO: criado\r\n[84/140] 0066-ERO: criado\r\n[85/140] 0067-ERO: criado\r\n[86/140] 0068-ERO: criado\r\n[87/140] 0069-ERO: criado\r\n[88/140] 0070-ERO: criado\r\n[89/140] 0111-ABV: criado\r\n[90/140] 0112-ABV: criado\r\n[91/140] 0113-ABV: criado\r\n[92/140] 0114-ABV: criado\r\n[93/140] 0115-ABV: criado\r\n[94/140] 17046-AL: criado\r\n[95/140] 17047-AL: criado\r\n[96/140] 17048-AL: criado\r\n[97/140] 17049-AL: criado\r\n[98/140] 17050-AL: criado\r\n[99/140] 17061-AL: criado\r\n[100/140] 17062-AL: criado\r\nLote 3/3: OS 101 a 140.\r\n[101/140] 17064-AL: criado\r\n[102/140] 17065-AL: criado\r\n[103/140] 17066-AL: criado\r\n[104/140] 17067-AL: criado\r\n[105/140] 17068-AL: criado\r\n[106/140] 17069-AL: criado\r\n[107/140] 17070-AL: criado\r\n[108/140] 17071-AL: criado\r\n[109/140] 17072-AL: criado\r\n[110/140] 3167-CA: criado\r\n[111/140] 3168-CA: criado\r\n[112/140] 3169-CA: criado\r\n[113/140] 3170-CA: criado\r\n[114/140] 3171-CA: criado\r\n[115/140] 3172-CA: criado\r\n[116/140] 3173-CA: criado\r\n[117/140] 3174-CA: criado\r\n[118/140] 0704-PKO: criado\r\n[119/140] 0705-FAN: criado\r\n[120/140] 0706-FAN: criado\r\n[121/140] 0707-FAN: criado\r\n[122/140] 1238-ALU: criado\r\n[123/140] 1239-ALU: criado\r\n[124/140] 1240-ALU: criado\r\n[125/140] 0708-IDE: criado\r\n[126/140] 0709-IDE: criado\r\n[127/140] 0710-IDE: criado\r\n[128/140] 0711-SAB: criado\r\n[129/140] 17078-AL: criado\r\n[130/140] 17079-AL: criado\r\n[131/140] 17080-AL: criado\r\n[132/140] 17081-AL: criado\r\n[133/140] 17082-AL: criado\r\n[134/140] 17083-AL: criado\r\n[135/140] 2258-SA: criado\r\n[136/140] 0712-AMB: criado\r\n[137/140] 2259-SA: criado\r\n[138/140] 2260-SA: criado\r\n[139/140] 2261-SA: criado\r\n[140/140] 1807-PO: criado\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786460481081",
+    "timestamp": "2026-08-11T15:01:21.081Z",
+    "taskId": "1786460462865",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 69, in conectar\r\n    raise e\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 60, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]Provedor SSL: A cadeia de certifica��o foi emitida por uma autoridade que n�o � de confian�a.\\r\\n (-2146893019) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]O cliente n�o p�de estabelecer a conex�o (-2146893019)')\r\n"
+  },
+  {
+    "id": "1786460350715",
+    "timestamp": "2026-08-11T14:59:10.715Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 69, in conectar\r\n    raise e\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 60, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', '[08001] [Microsoft][ODBC Driver 17 for SQL Server]Provedor SSL: A cadeia de certifica��o foi emitida por uma autoridade que n�o � de confian�a.\\r\\n (-2146893019) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 17 for SQL Server]O cliente n�o p�de estabelecer a conex�o (-2146893019)')\r\n"
+  },
+  {
+    "id": "1786459339877",
+    "timestamp": "2026-08-11T14:42:19.877Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 17 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786459217644",
+    "timestamp": "2026-08-11T14:40:17.644Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 17 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786459167612",
+    "timestamp": "2026-08-11T14:39:27.612Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 17 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786459128874",
+    "timestamp": "2026-08-11T14:38:48.874Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 17 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786459000718",
+    "timestamp": "2026-08-11T14:36:40.718Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 18 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786458036581",
+    "timestamp": "2026-08-11T14:20:36.581Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 18 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786458006776",
+    "timestamp": "2026-08-11T14:20:06.776Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 18 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786457533027",
+    "timestamp": "2026-08-11T14:12:13.027Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 45, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.OperationalError: ('08001', \"[08001] [Microsoft][ODBC Driver 18 for SQL Server]Valor inv�lido especificado para atributo da cadeia de conex�o 'TrustServerCertificate' (0) (SQLDriverConnect)\")\r\n"
+  },
+  {
+    "id": "1786457283997",
+    "timestamp": "2026-08-11T14:08:03.997Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786457208544",
+    "timestamp": "2026-08-11T14:06:48.544Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786456805620",
+    "timestamp": "2026-08-11T14:00:05.620Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786456706023",
+    "timestamp": "2026-08-11T13:58:26.023Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455846267",
+    "timestamp": "2026-08-11T13:44:06.267Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455724130",
+    "timestamp": "2026-08-11T13:42:04.130Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455190520",
+    "timestamp": "2026-08-11T13:33:10.520Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455138361",
+    "timestamp": "2026-08-11T13:32:18.361Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455124040",
+    "timestamp": "2026-08-11T13:32:04.040Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786455017878",
+    "timestamp": "2026-08-11T13:30:17.878Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454706592",
+    "timestamp": "2026-08-11T13:25:06.592Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454107978",
+    "timestamp": "2026-08-11T13:15:07.978Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454058279",
+    "timestamp": "2026-08-11T13:14:18.279Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454058268",
+    "timestamp": "2026-08-11T13:14:18.268Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454057449",
+    "timestamp": "2026-08-11T13:14:17.449Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786454049077",
+    "timestamp": "2026-08-11T13:14:09.077Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1313, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1209, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 509, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786453025751",
+    "timestamp": "2026-08-11T12:57:05.751Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1315, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 1211, in main\r\n    df_os = buscar_os_processaveis(config, ANO_INICIO_ANALISE, LIMITE_LINHAS)\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 511, in buscar_os_processaveis\r\n    with conectar(config) as conn:\r\n         ~~~~~~~~^^^^^^^^\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 26, in conectar\r\n    return pyodbc.connect(conn_str)\r\n           ~~~~~~~~~~~~~~^^^^^^^^^^\r\npyodbc.InterfaceError: ('IM002', '[IM002] [Microsoft][ODBC Driver Manager] Nome da fonte de dados n�o encontrado e nenhum driver padr�o especificado (0) (SQLDriverConnect)')\r\n"
+  },
+  {
+    "id": "1786452901998",
+    "timestamp": "2026-08-11T12:55:01.998Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 20, in <module>\r\n    from db import conectar\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 1, in <module>\r\n    import pyodbc\r\nModuleNotFoundError: No module named 'pyodbc'\r\n"
+  },
+  {
+    "id": "1786452857707",
+    "timestamp": "2026-08-11T12:54:17.707Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 20, in <module>\r\n    from db import conectar\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 1, in <module>\r\n    import pyodbc\r\nModuleNotFoundError: No module named 'pyodbc'\r\n"
+  },
+  {
+    "id": "1786452852655",
+    "timestamp": "2026-08-11T12:54:12.655Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 20, in <module>\r\n    from db import conectar\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 1, in <module>\r\n    import pyodbc\r\nModuleNotFoundError: No module named 'pyodbc'\r\n"
+  },
+  {
+    "id": "1786452503522",
+    "timestamp": "2026-08-11T12:48:23.522Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 20, in <module>\r\n    from db import conectar\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 1, in <module>\r\n    import pyodbc\r\nModuleNotFoundError: No module named 'pyodbc'\r\n"
+  },
+  {
+    "id": "1786452472374",
+    "timestamp": "2026-08-11T12:47:52.374Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 20, in <module>\r\n    from db import conectar\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\db.py\", line 1, in <module>\r\n    import pyodbc\r\nModuleNotFoundError: No module named 'pyodbc'\r\n"
+  },
+  {
+    "id": "1786452298018",
+    "timestamp": "2026-08-11T12:44:58.018Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 11, in <module>\r\n    from config import PROJETO_DIR, carregar_config, obter_tabelas, validar_dataverse\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\config.py\", line 5, in <module>\r\n    from dotenv import load_dotenv, find_dotenv\r\nModuleNotFoundError: No module named 'dotenv'\r\n"
+  },
+  {
+    "id": "1786452298016",
+    "timestamp": "2026-08-11T12:44:58.016Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 11, in <module>\r\n    from config import PROJETO_DIR, carregar_config, obter_tabelas, validar_dataverse\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\config.py\", line 5, in <module>\r\n    from dotenv import load_dotenv, find_dotenv\r\nModuleNotFoundError: No module named 'dotenv'\r\n"
+  },
+  {
+    "id": "1786451581243",
+    "timestamp": "2026-08-11T12:33:01.243Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786451457198",
+    "timestamp": "2026-08-11T12:30:57.198Z",
+    "taskId": "1786450389445",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786450981268",
+    "timestamp": "2026-08-11T12:23:01.268Z",
+    "taskId": "1786450952456",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "failed",
+    "output": "Traceback (most recent call last):\r\n  File \"C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py\", line 8, in <module>\r\n    import pandas as pd\r\nModuleNotFoundError: No module named 'pandas'\r\n"
+  },
+  {
+    "id": "1786448101945",
+    "timestamp": "2026-08-11T11:35:01.945Z",
+    "taskId": "1786447928299",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786445041396",
+    "timestamp": "2026-08-11T10:44:01.396Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786444990194",
+    "timestamp": "2026-08-11T10:43:10.194Z",
+    "taskId": "1786444958308",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786444940830",
+    "timestamp": "2026-08-11T10:42:20.830Z",
+    "taskId": "1786368062006",
+    "title": "testeAPI.py",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testeAPI.py",
+    "status": "failed",
+    "output": "Script não encontrado: C:\\Automacoes\\testeAPI.py"
+  },
+  {
+    "id": "1786444921540",
+    "timestamp": "2026-08-11T10:42:01.540Z",
+    "taskId": "1786368062006",
+    "title": "testeAPI",
+    "fileName": "testee",
+    "scriptPath": "C:\\Automacoes\\testee\\",
+    "status": "failed",
+    "output": "C:\\Automacoes\\.venv\\Scripts\\python.exe: can't open file 'C:\\\\Automacoes\\\\testee\"': [Errno 22] Invalid argument\r\n"
+  },
+  {
+    "id": "1786444801199",
+    "timestamp": "2026-08-11T10:40:01.199Z",
+    "taskId": "1786368062006",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testeAPI.py",
+    "status": "failed",
+    "output": "Script não encontrado: C:\\Automacoes\\testeAPI.py"
+  },
+  {
+    "id": "1786381201415",
+    "timestamp": "2026-08-10T17:00:01.415Z",
+    "taskId": "1786381094439",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786368181131",
+    "timestamp": "2026-08-10T13:23:01.131Z",
+    "taskId": "1786368062006",
+    "title": "testeAPI",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  },
+  {
+    "id": "1786368061141",
+    "timestamp": "2026-08-10T13:21:01.141Z",
+    "taskId": "1786357391280",
+    "title": "teste03",
+    "fileName": "testeAPI.py",
+    "scriptPath": "C:\\Automacoes\\testeAPI.py",
+    "status": "success",
+    "output": "T� funcionando!\r\nNeymar foi injusti�ado pelo tempo\r\ntalk Everything here, s� pra I look one thing\r\n"
+  }
+]

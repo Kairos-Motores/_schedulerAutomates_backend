@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend para automações e execuções de scripts",
+  "homepage": "https://github.com/Kairos-Motores/schedulerAutomates-backend#readme",
+  "bugs": {
+    "url": "https://github.com/Kairos-Motores/schedulerAutomates-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kairos-Motores/schedulerAutomates-backend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

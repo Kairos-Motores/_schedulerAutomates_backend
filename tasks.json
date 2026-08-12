@@ -1,0 +1,59 @@
+[
+  {
+    "id": "1786444958308",
+    "title": "testeAPI",
+    "time": "07:44",
+    "days": [
+      "tue",
+      "wed"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\testee\\testeAPI.py",
+    "status": "success"
+  },
+  {
+    "id": "1786460462865",
+    "title": "dataverse_margens",
+    "time": "08:56",
+    "days": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success"
+  },
+  {
+    "id": "1786532771273",
+    "title": "get-columns-2",
+    "time": "08:51",
+    "days": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "success"
+  },
+  {
+    "id": "1786535541369",
+    "title": "get-columns-3",
+    "time": "08:53",
+    "days": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-3.py",
+    "status": "success"
+  }
+]
