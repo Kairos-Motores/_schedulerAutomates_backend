@@ -16,44 +16,55 @@ const BASE_SCRIPTS_DIR = 'C:/Automacoes';
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
 const HISTORY_FILE = path.join(__dirname, 'history.json');
 
-// 🌐 CONFIGURAÇÃO DE CORS E PRIVATE NETWORK ACCESS (PNA)
+const cors = require('cors');
+
+// 🌐 ORIGENS PERMITIDAS
 const allowedOrigins = [
     'https://scheduler-automates.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173'
 ];
 
-// 1. Libera o acesso de HTTPS (Vercel) para HTTP Localhost (Loopback)
+// 1. Configuração Robusta do CORS
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Permite requisições sem origem (como ferramentas de teste/Postman)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('Bloqueado pelo CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Private-Network'],
+};
+
+// 2. Middleware para aplicar o PNA (Private Network Access) em TODAS as requisições (inclusive OPTIONS)
 app.use((req, res, next) => {
     const origin = req.headers.origin;
     if (allowedOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
         res.setHeader('Access-Control-Allow-Credentials', 'true');
-        // 👇 Essa linha resolve o erro do loopback/private network no Chrome
-        res.setHeader('Access-Control-Allow-Private-Network', 'true');
     }
 
+    // 🛑 ESSENCIAL PARA O CHROME/EDGE: Libera o acesso de HTTPS na Vercel -> HTTP Localhost
+    res.setHeader('Access-Control-Allow-Private-Network', 'true');
+
+    // Trata a requisição Preflight (OPTIONS)
     if (req.method === 'OPTIONS') {
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Private-Network');
         return res.sendStatus(204);
     }
 
     next();
 });
 
-// 2. Middleware do CORS
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            return callback(null, true);
-        } else {
-            return callback(new Error('Bloqueado pelo CORS'));
-        }
-    },
-    credentials: true
-}));
+// 3. Aplica o Middleware Cors
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
