@@ -28,18 +28,29 @@ const ALLOWED_ORIGINS = [
     'http://localhost:8000'
 ];
 
-// 1. Configuração Robusta de CORS & PNA (Private Network Access)
+// 1. Configuração Robusta de CORS, PNA & Ngrok
 app.use((req, res, next) => {
     const origin = req.headers.origin;
 
-    // Permite requisições sem origem (Postman/Curl) ou origens permitidas
-    if (!origin || ALLOWED_ORIGINS.includes(origin) || origin.endsWith('.vercel.app')) {
+    // Permite requisições sem origem, origens permitidas, Vercel e Ngrok
+    if (
+        !origin ||
+        ALLOWED_ORIGINS.includes(origin) ||
+        origin.endsWith('.vercel.app') ||
+        origin.endsWith('.ngrok-free.app') ||
+        origin.endsWith('.ngrok.io')
+    ) {
         res.setHeader('Access-Control-Allow-Origin', origin || '*');
     }
 
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Private-Network');
+
+    // 💡 Liberado o cabeçalho 'ngrok-skip-browser-warning' para o frontend ignorar a tela de aviso do Ngrok
+    res.setHeader(
+        'Access-Control-Allow-Headers',
+        'Content-Type, Authorization, Access-Control-Allow-Private-Network, ngrok-skip-browser-warning'
+    );
 
     // Libera comunicação de HTTPS (Vercel) para HTTP/Localhost
     res.setHeader('Access-Control-Allow-Private-Network', 'true');
@@ -149,11 +160,8 @@ const ensureVenvEnvironment = (scriptDir) => {
 
 // 🔎 Mapeamento de imports para nomes de pacotes no PIP
 const PACKAGE_MAP = {
-    // 🟢 Corrigidos / Essenciais
     cv2: 'opencv-python',
     dotenv: 'python-dotenv',
-
-    // 📊 Manipulação de Dados & Arquivos
     pandas: 'pandas',
     openpyxl: 'openpyxl',
     pyodbc: 'pyodbc',
@@ -162,17 +170,11 @@ const PACKAGE_MAP = {
     xlsxwriter: 'xlsxwriter',
     yaml: 'pyyaml',
     fitz: 'PyMuPDF',
-
-    // 🌐 Web & APIs
     requests: 'requests',
     bs4: 'beautifulsoup4',
-
-    // ☁️ Azure & Cloud
     azure: 'azure-identity',
     'azure.identity': 'azure-identity',
     'azure.storage': 'azure-storage-blob',
-
-    // 🤖 Machine Learning / Outros comuns
     sklearn: 'scikit-learn'
 };
 
@@ -349,7 +351,7 @@ app.post('/api/tasks/run', async (req, res) => {
     const title = taskTitle || (taskObj?.title ?? 'Execução Manual');
     const fileName = path.basename(scriptPath);
 
-    // 📌 TRATAMENTO INTELIGENTE DE CAMINHO ABSOLUTO (Evita duplicação C:/Automacoes/C:\...)
+    // 📌 TRATAMENTO INTELIGENTE DE CAMINHO ABSOLUTO
     const isAbsolutePath = /^[a-zA-Z]:[\\/]/.test(scriptPath) || scriptPath.startsWith('/') || path.isAbsolute(scriptPath);
 
     const fullScriptPath = isAbsolutePath
@@ -451,6 +453,6 @@ app.post('/api/tasks/run', async (req, res) => {
 
 // 🚀 START SERVER
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    console.log(`🚀 Servidor local rodando em http://localhost:${PORT}`);
     console.log(`📁 Diretório padrão: ${BASE_SCRIPTS_DIR}`);
 });
