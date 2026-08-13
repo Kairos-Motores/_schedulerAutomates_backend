@@ -20,52 +20,29 @@ const BASE_SCRIPTS_DIR = 'C:/Automacoes';
 const TASKS_FILE = path.join(__dirname, 'tasks.json');
 const HISTORY_FILE = path.join(__dirname, 'history.json');
 
-// 🌐 ORIGENS PERMITIDAS
-const ALLOWED_ORIGINS = [
-    'https://scheduler-automates.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'http://localhost:8000'
-];
+// ============================================================================
+// 1. CONFIGURAÇÃO ROBUSTA DE CORS (Correção aplicada)
+// ============================================================================
+app.use(cors({
+    origin: '*', // Permite a Vercel e o Ngrok acessarem livremente
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+        'Content-Type',
+        'Authorization',
+        'Access-Control-Allow-Private-Network',
+        'ngrok-skip-browser-warning'
+    ]
+}));
 
-// 1. Configuração Robusta de CORS, PNA & Ngrok
-app.use((req, res, next) => {
-    const origin = req.headers.origin;
-
-    // Permite requisições sem origem, origens permitidas, Vercel e Ngrok
-    if (
-        !origin ||
-        ALLOWED_ORIGINS.includes(origin) ||
-        origin.endsWith('.vercel.app') ||
-        origin.endsWith('.ngrok-free.app') ||
-        origin.endsWith('.ngrok.io')
-    ) {
-        res.setHeader('Access-Control-Allow-Origin', origin || '*');
-    }
-
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-
-    // 💡 Liberado o cabeçalho 'ngrok-skip-browser-warning' para o frontend ignorar a tela de aviso do Ngrok
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Content-Type, Authorization, Access-Control-Allow-Private-Network, ngrok-skip-browser-warning'
-    );
-
-    // Libera comunicação de HTTPS (Vercel) para HTTP/Localhost
-    res.setHeader('Access-Control-Allow-Private-Network', 'true');
-
-    if (req.method === 'OPTIONS') {
-        return res.status(204).end();
-    }
-
-    next();
-});
+// Responder rapidamente a requisições preflight (OPTIONS) do navegador
+app.options('*', cors());
 
 // 2. Middlewares Globais
 app.use(express.json());
 
-// 📁 Garantia de existência de diretórios/arquivos base
+// ============================================================================
+// 📁 GARANTIA DE ARQUIVOS BASE
+// ============================================================================
 if (!fs.existsSync(BASE_SCRIPTS_DIR)) fs.mkdirSync(BASE_SCRIPTS_DIR, { recursive: true });
 if (!fs.existsSync(TASKS_FILE)) fs.writeFileSync(TASKS_FILE, JSON.stringify([], null, 2));
 if (!fs.existsSync(HISTORY_FILE)) fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2));
@@ -99,7 +76,9 @@ const addHistoryEntry = (entry) => {
     }
 };
 
-// 🛠️ AUXILIAR: GESTÃO INTELIGENTE DE AMBIENTE VIRTUAL (VENV)
+// ============================================================================
+// 🛠️ AUXILIARES DE VENV E AUTO-INSTALL PIP
+// ============================================================================
 const ensureVenvEnvironment = (scriptDir) => {
     const rootVenvDir = path.join(BASE_SCRIPTS_DIR, '.venv');
     const rootPython = path.join(rootVenvDir, 'Scripts', 'python.exe');
@@ -158,29 +137,17 @@ const ensureVenvEnvironment = (scriptDir) => {
     return 'python';
 };
 
-// 🔎 Mapeamento de imports para nomes de pacotes no PIP
 const PACKAGE_MAP = {
-    cv2: 'opencv-python',
-    dotenv: 'python-dotenv',
-    pandas: 'pandas',
-    openpyxl: 'openpyxl',
-    pyodbc: 'pyodbc',
-    PIL: 'Pillow',
-    docx: 'python-docx',
-    xlsxwriter: 'xlsxwriter',
-    yaml: 'pyyaml',
-    fitz: 'PyMuPDF',
-    requests: 'requests',
-    bs4: 'beautifulsoup4',
-    azure: 'azure-identity',
-    'azure.identity': 'azure-identity',
-    'azure.storage': 'azure-storage-blob',
-    sklearn: 'scikit-learn'
+    cv2: 'opencv-python', dotenv: 'python-dotenv', pandas: 'pandas',
+    openpyxl: 'openpyxl', pyodbc: 'pyodbc', PIL: 'Pillow',
+    docx: 'python-docx', xlsxwriter: 'xlsxwriter', yaml: 'pyyaml',
+    fitz: 'PyMuPDF', requests: 'requests', bs4: 'beautifulsoup4',
+    azure: 'azure-identity', 'azure.identity': 'azure-identity',
+    'azure.storage': 'azure-storage-blob', sklearn: 'scikit-learn'
 };
 
 const installedPackagesCache = new Set();
 
-// 🤖 AUTO-INSTALL INTELIGENTE DE MÓDULOS PYTHON
 const autoInstallImports = (scriptPath, pythonExe) => {
     try {
         const content = fs.readFileSync(scriptPath, 'utf-8');
@@ -239,7 +206,10 @@ const autoInstallImports = (scriptPath, pythonExe) => {
     }
 };
 
-// 📁 ROTA: Seleção de arquivos via caixa do Windows (PowerShell)
+// ============================================================================
+// 🌐 ROTAS DA API
+// ============================================================================
+
 app.post('/api/select-script', async (req, res) => {
     const uniqueId = `${Date.now()}_${Math.floor(Math.random() * 1000)}`;
     const tempPs1Path = path.join(__dirname, `temp_select_${uniqueId}.ps1`);
@@ -284,12 +254,10 @@ $form.Dispose()
     }
 });
 
-// 🟢 GET: Buscar automações
 app.get('/api/tasks', (req, res) => {
     res.json(readTasksFromFile());
 });
 
-// 🟡 POST: Salvar ou Atualizar automação
 app.post('/api/tasks', (req, res) => {
     try {
         const newTask = req.body;
@@ -309,7 +277,6 @@ app.post('/api/tasks', (req, res) => {
     }
 });
 
-// 🔴 DELETE: Remover automação
 app.delete('/api/tasks/:id', (req, res) => {
     try {
         const { id } = req.params;
@@ -321,12 +288,10 @@ app.delete('/api/tasks/:id', (req, res) => {
     }
 });
 
-// 📜 GET: Buscar Histórico
 app.get('/api/history', (req, res) => {
     res.json(readHistoryFromFile());
 });
 
-// 📜 DELETE: Limpar Histórico
 app.delete('/api/history', (req, res) => {
     try {
         fs.writeFileSync(HISTORY_FILE, JSON.stringify([], null, 2));
@@ -336,118 +301,129 @@ app.delete('/api/history', (req, res) => {
     }
 });
 
-// ⚡ POST: Executar automação
+// ============================================================================
+// ⚡ EXECUÇÃO DE TAREFA - COM PROTEÇÃO ANTI-CORS E TRY-CATCH GLOBAL
+// ============================================================================
 app.post('/api/tasks/run', async (req, res) => {
-    const { scriptPath, taskId, taskTitle } = req.body;
+    try {
+        const { scriptPath, taskId, taskTitle } = req.body;
 
-    if (!scriptPath) {
-        return res.status(400).json({ success: false, error: 'Caminho do script não informado.' });
-    }
+        if (!scriptPath) {
+            // Retorna 200 para evitar bloqueio de CORS pelo Ngrok em status de erro
+            return res.json({ success: false, error: 'Caminho do script não informado.' });
+        }
 
-    const tasks = readTasksFromFile();
-    const taskIndex = tasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
-    const taskObj = tasks[taskIndex] ?? null;
+        const tasks = readTasksFromFile();
+        const taskIndex = tasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+        const taskObj = tasks[taskIndex] ?? null;
 
-    const title = taskTitle || (taskObj?.title ?? 'Execução Manual');
-    const fileName = path.basename(scriptPath);
+        const title = taskTitle || (taskObj?.title ?? 'Execução Manual');
+        const fileName = path.basename(scriptPath);
 
-    // 📌 TRATAMENTO INTELIGENTE DE CAMINHO ABSOLUTO
-    const isAbsolutePath = /^[a-zA-Z]:[\\/]/.test(scriptPath) || scriptPath.startsWith('/') || path.isAbsolute(scriptPath);
+        // 📌 TRATAMENTO INTELIGENTE DE CAMINHO ABSOLUTO
+        const isAbsolutePath = /^[a-zA-Z]:[\\/]/.test(scriptPath) || scriptPath.startsWith('/') || path.isAbsolute(scriptPath);
 
-    const fullScriptPath = isAbsolutePath
-        ? path.normalize(scriptPath)
-        : path.join(BASE_SCRIPTS_DIR, scriptPath);
-
-    if (taskIndex !== -1) {
-        tasks[taskIndex].status = 'processing';
-        fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks, null, 2));
-    }
-
-    if (!fs.existsSync(fullScriptPath)) {
-        const errMsg = `Script não encontrado: ${fullScriptPath}`;
+        const fullScriptPath = isAbsolutePath
+            ? path.normalize(scriptPath)
+            : path.join(BASE_SCRIPTS_DIR, scriptPath);
 
         if (taskIndex !== -1) {
-            tasks[taskIndex].status = 'failed';
+            tasks[taskIndex].status = 'processing';
             fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks, null, 2));
         }
 
-        addHistoryEntry({
-            taskId: taskId ?? null,
-            title,
-            fileName,
-            scriptPath: fullScriptPath,
-            status: 'failed',
-            output: errMsg
-        });
+        if (!fs.existsSync(fullScriptPath)) {
+            const errMsg = `Script não encontrado: ${fullScriptPath}`;
 
-        return res.status(404).json({ success: false, error: errMsg });
-    }
+            if (taskIndex !== -1) {
+                tasks[taskIndex].status = 'failed';
+                fs.writeFileSync(TASKS_FILE, JSON.stringify(tasks, null, 2));
+            }
 
-    const scriptDir = path.dirname(fullScriptPath);
-    const fileExt = path.extname(fullScriptPath).toLowerCase();
+            addHistoryEntry({
+                taskId: taskId ?? null,
+                title,
+                fileName,
+                scriptPath: fullScriptPath,
+                status: 'failed',
+                output: errMsg
+            });
 
-    let command = '';
-
-    if (['.bat', '.cmd', '.exe'].includes(fileExt)) {
-        command = `"${fullScriptPath}"`;
-        console.log(`▶ Executando EXECUTÁVEL/BATCH: ${fullScriptPath}`);
-    } else {
-        const pythonExe = ensureVenvEnvironment(scriptDir);
-        autoInstallImports(fullScriptPath, pythonExe);
-
-        command = `${pythonExe} "${fullScriptPath}"`;
-        console.log(`▶ Executando PYTHON: ${fullScriptPath} usando [${pythonExe}]`);
-    }
-
-    try {
-        const { stdout } = await execAsync(command, {
-            cwd: scriptDir,
-            env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
-        });
-
-        const updatedTasks = readTasksFromFile();
-        const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
-
-        if (currentTaskIdx !== -1) {
-            updatedTasks[currentTaskIdx].status = 'success';
-            fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
+            // Retorna 200 com success: false em vez de 404 para proteger o CORS
+            return res.json({ success: false, error: errMsg });
         }
 
-        addHistoryEntry({
-            taskId: taskId ?? null,
-            title,
-            fileName,
-            scriptPath: fullScriptPath,
-            status: 'success',
-            output: stdout || 'Executado com sucesso.'
-        });
+        const scriptDir = path.dirname(fullScriptPath);
+        const fileExt = path.extname(fullScriptPath).toLowerCase();
 
-        return res.json({ success: true, output: stdout });
-    } catch (error) {
-        let errOutput = error.stderr || error.message;
+        let command = '';
 
-        if (errOutput.includes('IM002') || errOutput.includes('SQLDriverConnect')) {
-            errOutput = `⚠️ ERRO DE SISTEMA: O Driver ODBC do SQL Server não está instalado neste PC.\n\nInstale o 'ODBC Driver 17 for SQL Server' para habilitar a conexão.`;
+        if (['.bat', '.cmd', '.exe'].includes(fileExt)) {
+            command = `"${fullScriptPath}"`;
+            console.log(`▶ Executando EXECUTÁVEL/BATCH: ${fullScriptPath}`);
+        } else {
+            const pythonExe = ensureVenvEnvironment(scriptDir);
+            autoInstallImports(fullScriptPath, pythonExe);
+
+            command = `${pythonExe} "${fullScriptPath}"`;
+            console.log(`▶ Executando PYTHON: ${fullScriptPath} usando [${pythonExe}]`);
         }
 
-        const updatedTasks = readTasksFromFile();
-        const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+        try {
+            const { stdout } = await execAsync(command, {
+                cwd: scriptDir,
+                env: { ...process.env, PYTHONIOENCODING: 'utf-8' }
+            });
 
-        if (currentTaskIdx !== -1) {
-            updatedTasks[currentTaskIdx].status = 'failed';
-            fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
+            const updatedTasks = readTasksFromFile();
+            const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+
+            if (currentTaskIdx !== -1) {
+                updatedTasks[currentTaskIdx].status = 'success';
+                fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
+            }
+
+            addHistoryEntry({
+                taskId: taskId ?? null,
+                title,
+                fileName,
+                scriptPath: fullScriptPath,
+                status: 'success',
+                output: stdout || 'Executado com sucesso.'
+            });
+
+            return res.json({ success: true, output: stdout });
+        } catch (error) {
+            let errOutput = error.stderr || error.message;
+
+            if (errOutput.includes('IM002') || errOutput.includes('SQLDriverConnect')) {
+                errOutput = `⚠️ ERRO DE SISTEMA: O Driver ODBC do SQL Server não está instalado neste PC.\n\nInstale o 'ODBC Driver 17 for SQL Server' para habilitar a conexão.`;
+            }
+
+            const updatedTasks = readTasksFromFile();
+            const currentTaskIdx = updatedTasks.findIndex((t) => t.id === taskId || t.scriptPath === scriptPath);
+
+            if (currentTaskIdx !== -1) {
+                updatedTasks[currentTaskIdx].status = 'failed';
+                fs.writeFileSync(TASKS_FILE, JSON.stringify(updatedTasks, null, 2));
+            }
+
+            addHistoryEntry({
+                taskId: taskId ?? null,
+                title,
+                fileName,
+                scriptPath: fullScriptPath,
+                status: 'failed',
+                output: errOutput
+            });
+
+            // Retorna 200 com success: false em vez de 500 para proteger o CORS
+            return res.json({ success: false, error: errOutput });
         }
-
-        addHistoryEntry({
-            taskId: taskId ?? null,
-            title,
-            fileName,
-            scriptPath: fullScriptPath,
-            status: 'failed',
-            output: errOutput
-        });
-
-        return res.status(500).json({ success: false, error: errOutput });
+    } catch (fatalError) {
+        console.error("Erro fatal na rota de execução:", fatalError);
+        // Retorno seguro caso o próprio código falhe
+        return res.json({ success: false, error: `Falha interna no Node.js: ${fatalError.message}` });
     }
 });
 

@@ -59,7 +59,7 @@
     }
   ],
   {
-    "id": "1786626370110",
+    "id": "1786629311946",
     "title": "get-columns-2",
     "time": "12:00",
     "days": [
@@ -70,7 +70,36 @@
       "fri"
     ],
     "enabled": true,
-    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py"
+  },
+  {
+    "id": "1786629581377",
+    "title": "get-columns-3",
+    "time": "11:01",
+    "days": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-3.py",
+    "status": "success"
+  },
+  {
+    "id": "1786629789037",
+    "title": "dataverse_margens",
+    "time": "11:17",
+    "days": [
+      "mon",
+      "tue",
+      "wed",
+      "thu",
+      "fri"
+    ],
+    "enabled": true,
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
     "status": "success"
   }
 ]

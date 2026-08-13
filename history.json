@@ -1,5 +1,75 @@
 [
   {
+    "id": "1786630837722",
+    "timestamp": "2026-08-13T14:20:37.722Z",
+    "taskId": "1786629789037",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4478\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4478/4478.\r\nOS ja existentes no Dataverse: 4491\r\nOS mapeadas para processamento: 29\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/1: OS 1 a 29.\r\n[1/29] 0049-SL: sem alteracao\r\n[2/29] 15637-AL: sem alteracao\r\n[3/29] 1664-PO: sem alteracao\r\n[4/29] 15666-AL: sem alteracao\r\n[5/29] 15721-AL: sem alteracao\r\n[6/29] 15761-AL: sem alteracao\r\n[7/29] 0061-SL: sem alteracao\r\n[8/29] 0886-ALU: sem alteracao\r\n[9/29] 1686-PO: sem alteracao\r\n[10/29] 2053-SA: sem alteracao\r\n[11/29] 15884-AL: sem alteracao\r\n[12/29] 0212-OP: sem alteracao\r\n[13/29] 15929-WH: sem alteracao\r\n[14/29] 1157-FE: sem alteracao\r\n[15/29] 2992-CA: sem alteracao\r\n[16/29] 1071-ALU: sem alteracao\r\n[17/29] 0370-TAR: sem alteracao\r\n[18/29] 2187-SA: sem alteracao\r\n[19/29] 0479-PLA: sem alteracao\r\n[20/29] 16586-AL: sem alteracao\r\n[21/29] 16641-AG: sem alteracao\r\n[22/29] 1152-ALU: sem alteracao\r\n[23/29] 16685-AL: sem alteracao\r\n[24/29] 0193-OZ: sem alteracao\r\n[25/29] 0196-OZ: sem alteracao\r\n[26/29] 16874-AL: atualizado\r\n[27/29] 0379-ENV: atualizado\r\n[28/29] 0653-EFD: atualizado\r\n[29/29] 0665-NTS: sem alteracao\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786630345367",
+    "timestamp": "2026-08-13T14:12:25.367Z",
+    "taskId": "1786629789037",
+    "title": "dataverse_margens",
+    "fileName": "dataverse_margens.py",
+    "scriptPath": "C:\\Automacoes\\dataversemargens_Pasta\\dataverse_margens.py",
+    "status": "success",
+    "output": "Iniciando carga de margens...\r\nConexao com Dataverse OK.\r\nTabela Dataverse OK: echoe_margenses.\r\nOS elegiveis mapeadas: 4478\r\nComparando lista atual com CSV anterior e Dataverse...\r\nCalculando assinatura rapida das origens...\r\nDisparo incremental considera apenas Protheus: SD3 e ZP1.\r\nIgnorando no disparo incremental: SRA010.\r\nAssinaturas SQL em lote: 1/5.\r\nAssinaturas SQL em lote: 2/5.\r\nAssinaturas SQL em lote: 3/5.\r\nAssinaturas SQL em lote: 4/5.\r\nAssinaturas SQL em lote: 5/5.\r\nAssinaturas calculadas: 4478/4478.\r\nOS ja existentes no Dataverse: 4477\r\nOS mapeadas para processamento: 93\r\nLista salva em: C:\\Automacoes\\controle_carga_margens\\os_mapeadas.csv\r\nConexao com Protheus OK.\r\nCustos SRA carregados: 160 registros.\r\nCredenciais Dataverse carregadas: 309 registros.\r\nLote 1/2: OS 1 a 50.\r\n[1/93] 1969-SA: sem alteracao\r\n[2/93] 0049-SL: sem alteracao\r\n[3/93] 2921-CA: sem alteracao\r\n[4/93] 0788-ALU: sem alteracao\r\n[5/93] 15637-AL: sem alteracao\r\n[6/93] 15666-AL: sem alteracao\r\n[7/93] 0061-SL: sem alteracao\r\n[8/93] 0872-ALU: sem alteracao\r\n[9/93] 2053-SA: sem alteracao\r\n[10/93] 15933-AL: sem alteracao\r\n[11/93] 2992-CA: sem alteracao\r\n[12/93] 3027-CA: atualizado\r\n[13/93] 1735-PO: sem alteracao\r\n[14/93] 16107-AB: sem alteracao\r\n[15/93] 0297-EMB: sem alteracao\r\n[16/93] 16337-AL: sem alteracao\r\n[17/93] 16349-UN: sem alteracao\r\n[18/93] 16416-MT: sem alteracao\r\n[19/93] 2187-SA: atualizado\r\n[20/93] 0479-PLA: sem alteracao\r\n[21/93] 16586-AL: sem alteracao\r\n[22/93] 1133-ALU: atualizado\r\n[23/93] 2202-SA: atualizado\r\n[24/93] 0021-GQ: atualizado\r\n[25/93] 16641-AG: sem alteracao\r\n[26/93] 1152-ALU: sem alteracao\r\n[27/93] 1158-ALU: atualizado\r\n[28/93] 16685-AL: sem alteracao\r\n[29/93] 0193-OZ: sem alteracao\r\n[30/93] 3113-CA: atualizado\r\n[31/93] 0001-GE: atualizado\r\n[32/93] 0002-GE: atualizado\r\n[33/93] 0003-GE: atualizado\r\n[34/93] 0004-GE: atualizado\r\n[35/93] 0005-GE: atualizado\r\n[36/93] 0006-GE: atualizado\r\n[37/93] 0007-GE: atualizado\r\n[38/93] 0196-OZ: sem alteracao\r\n[39/93] 0003-OMG: atualizado\r\n[40/93] 0363-ENV: atualizado\r\n[41/93] 0537-AMB: sem alteracao\r\n[42/93] 3121-CA: atualizado\r\n[43/93] 0544-BOL: atualizado\r\n[44/93] 1357-FE: atualizado\r\n[45/93] 1197-ALU: atualizado\r\n[46/93] 1209-ALU: atualizado\r\n[47/93] 1218-ALU: atualizado\r\n[48/93] 1219-ALU: atualizado\r\n[49/93] 16850-AL: sem alteracao\r\n[50/93] 2236-SA: atualizado\r\nLote 2/2: OS 51 a 93.\r\n[51/93] 0599-SIM: atualizado\r\n[52/93] 0601-SIM: atualizado\r\n[53/93] 0012-CB: atualizado\r\n[54/93] 0104-ABV: atualizado\r\n[55/93] 1227-ALU: atualizado\r\n[56/93] 0386-ENV: atualizado\r\n[57/93] 0665-NTS: sem alteracao\r\n[58/93] 17005-MR: atualizado\r\n[59/93] 0667-AMB: atualizado\r\n[60/93] 17015-AG: atualizado\r\n[61/93] 17016-AG: atualizado\r\n[62/93] 0389-ENV: atualizado\r\n[63/93] 0390-ENV: atualizado\r\n[64/93] 0391-ENV: atualizado\r\n[65/93] 0692-SAN: atualizado\r\n[66/93] 0693-SAN: atualizado\r\n[67/93] 0694-PLA: atualizado\r\n[68/93] 0700-SAN: atualizado\r\n[69/93] 2255-SA: atualizado\r\n[70/93] 2256-SA: atualizado\r\n[71/93] 17043-AL: atualizado\r\n[72/93] 3166-CA: atualizado\r\n[73/93] 0001-KM: atualizado\r\n[74/93] 3171-CA: atualizado\r\n[75/93] 0706-FAN: atualizado\r\n[76/93] 0707-FAN: atualizado\r\n[77/93] 0708-IDE: atualizado\r\n[78/93] 0709-IDE: atualizado\r\n[79/93] 0711-SAB: atualizado\r\n[80/93] 0009-JUP: criado\r\n[81/93] 0056-UC: criado\r\n[82/93] 0057-UC: criado\r\n[83/93] 0058-UC: criado\r\n[84/93] 0059-UC: criado\r\n[85/93] 0713-PKO: criado\r\n[86/93] 0714-PEP: criado\r\n[87/93] 0715-PEP: criado\r\n[88/93] 0716-PEP: criado\r\n[89/93] 0717-PEP: criado\r\n[90/93] 0718-PEP: criado\r\n[91/93] 0719-AMB: criado\r\n[92/93] 2262-SA: criado\r\n[93/93] 2263-SA: criado\r\nConferindo Dataverse contra a lista mapeada...\r\nConferencia salva em: C:\\Automacoes\\controle_carga_margens\\conferencia_final.csv\r\nFalhas na carga: 0\r\nOS ausentes no Dataverse: 0\r\nCarga finalizada.\r\n"
+  },
+  {
+    "id": "1786629699543",
+    "timestamp": "2026-08-13T14:01:39.543Z",
+    "taskId": "1786629581377",
+    "title": "get-columns-3",
+    "fileName": "get-columns-3.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-3.py",
+    "status": "success",
+    "output": "🔍 Buscando o maior RECNO real no Dataverse...\r\n📋 Top 5 RECNOs encontrados no Dataverse: [38001, 38000, 37999, 37998, 37997]\r\n✅ Ponto de retomada real detectado: 38001\r\n📊 Buscando no SQL Server (RECNO > 38001)...\r\n🚀 13 novos registros prontos para envio.\r\n🔥 [1/13] Sucesso no RECNO: 38002\r\n🔥 [13/13] Sucesso no RECNO: 38014\r\n"
+  },
+  {
+    "id": "1786629695419",
+    "timestamp": "2026-08-13T14:01:35.419Z",
+    "taskId": "1786629581377",
+    "title": "get-columns-3",
+    "fileName": "get-columns-3.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-3.py",
+    "status": "success",
+    "output": "🔍 Buscando o maior RECNO real no Dataverse...\r\n📋 Top 5 RECNOs encontrados no Dataverse: [37950, 37949, 37948, 37947, 37946]\r\n✅ Ponto de retomada real detectado: 37950\r\n📊 Buscando no SQL Server (RECNO > 37950)...\r\n🚀 62 novos registros prontos para envio.\r\n🔥 [1/62] Sucesso no RECNO: 37951\r\n🔥 [62/62] Sucesso no RECNO: 38014\r\n"
+  },
+  {
+    "id": "1786629362447",
+    "timestamp": "2026-08-13T13:56:02.447Z",
+    "taskId": "1786629290737",
+    "title": "get-columns-3",
+    "fileName": "get-columns-3.py",
+    "scriptPath": "C:\\Automacoes\\testee\\get-columns-3.py",
+    "status": "failed",
+    "output": "Script não encontrado: C:\\Automacoes\\testee\\get-columns-3.py"
+  },
+  {
+    "id": "1786629245724",
+    "timestamp": "2026-08-13T13:54:05.724Z",
+    "taskId": "1786626370110",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "success",
+    "output": "🔍 Analisando RECNO no Dataverse...\r\n📋 Maiores RECNOS encontrados: [18283, 18282, 18281, 18280, 18279]\r\n✅ Retomando a partir do RECNO > 18283\r\n🔌 Conectando ao Protheus...\r\n📊 0 novos registros encontrados.\r\n✅ Tudo sincronizado.\r\n"
+  },
+  {
+    "id": "1786627639418",
+    "timestamp": "2026-08-13T13:27:19.418Z",
+    "taskId": "1786627625913",
+    "title": "get-columns-2",
+    "fileName": "get-columns-2.py",
+    "scriptPath": "C:\\Automacoes\\column\\get-columns-2.py",
+    "status": "success",
+    "output": "🔍 Analisando RECNO no Dataverse...\r\n📋 Maiores RECNOS encontrados: [18283, 18282, 18281, 18280, 18279]\r\n✅ Retomando a partir do RECNO > 18283\r\n🔌 Conectando ao Protheus...\r\n📊 0 novos registros encontrados.\r\n✅ Tudo sincronizado.\r\n"
+  },
+  {
     "id": "1786626410077",
     "timestamp": "2026-08-13T13:06:50.077Z",
     "taskId": "1786626370110",
